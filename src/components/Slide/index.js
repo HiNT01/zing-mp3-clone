@@ -39,11 +39,11 @@ function Slide({ dataURL }) {
     return (
         <div className={clsx(style.slide_wrapper)}>
             <div className={clsx(style.slide_btnControl)}>
-                <Button ghost onClick={handlePrevSLide}>
+                <Button  onClick={handlePrevSLide}>
                     <i className="fa-solid fa-chevron-left"></i>
                 </Button>
 
-                <Button ghost onClick={handleNextSLide}>
+                <Button  onClick={handleNextSLide}>
                     <i className="fa-solid fa-chevron-right"></i>
                 </Button>
             </div>

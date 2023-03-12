@@ -1,0 +1,46 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    gap : 10px 0px
+}
+.newSongCategory_item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 0px 8px;
+    position: relative;
+    > img {
+        width: 52px;
+        height: 52px;
+        border-radius: 4px;
+    }
+    .newSongCategory_item_info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        text-transform: capitalize;
+        font-size: 1.4rem;
+        justify-content: center;
+        gap: 10px 0px;
+        > span {
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+    }
+    &:hover .newSongCategory_item_before {
+        display: flex;
+    }
+    .newSongCategory_item_before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: space-between;
+        padding: 0px 10px;
+        align-items: center;
+    }
+}

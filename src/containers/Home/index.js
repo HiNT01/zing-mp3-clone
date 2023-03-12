@@ -26,19 +26,21 @@ function Home() {
             },
         });
     });
+
     return (
         <div className={clsx(style.wrapper)}>
             {/* slide */}
             <Slide dataURL={dataURL} />
+
             {/* new */}
             <div className={clsx(style.newSongCategory)}>
                 <h3 className={clsx(style.newSongCategory_title)}>
                     mới phát hành
                 </h3>
                 <div className={clsx(style.newSongCategory_fillters)}>
-                    <Button primary>Tất cả</Button>
-                    <Button ghost>việt nam</Button>
-                    <Button ghost>quốc tế</Button>
+                    <Button className={clsx(style.newSongCategory_fillter,style.active)} >Tất cả</Button>
+                    <Button className={clsx(style.newSongCategory_fillter)} >việt nam</Button>
+                    <Button className={clsx(style.newSongCategory_fillter)} >quốc tế</Button>
                 </div>
                 <div className={clsx(style.newSongCategory_list)}>
                     <div className={clsx(style.newSongCategory_item)}>
@@ -122,7 +124,7 @@ function Home() {
             {/* new song */}
             <NewSong />
             {/* //// */}
-            <figure class="highcharts-figure">
+            <figure className="highcharts-figure">
                 <div id="container"></div>
             </figure>
         </div>

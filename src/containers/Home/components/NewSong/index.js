@@ -8,7 +8,7 @@ function NewSong() {
             <div className={clsx(style.NewSong_top)}>
                 <h3>Nhạc mới</h3>
                 <a>
-                    tất cả <i class="fa-solid fa-chevron-right"></i>
+                    tất cả <i className="fa-solid fa-chevron-right"></i>
                 </a>
             </div>
             <div className={clsx(style.NewSong_bottom)}>
@@ -17,7 +17,7 @@ function NewSong() {
                         <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/a/1/d/ba1dc4f790dedb967a397abff94ebc8f.jpg" />
                         <div>
                             <Button ghost>
-                                <i class="fa-solid fa-play"></i>
+                                <i className="fa-solid fa-play"></i>
                             </Button>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ function NewSong() {
                         <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/a/1/d/ba1dc4f790dedb967a397abff94ebc8f.jpg" />
                         <div>
                             <Button ghost>
-                                <i class="fa-solid fa-play"></i>
+                                <i className="fa-solid fa-play"></i>
                             </Button>
                         </div>
                     </div>
@@ -57,7 +57,7 @@ function NewSong() {
                         <img src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_webp/cover/b/a/1/d/ba1dc4f790dedb967a397abff94ebc8f.jpg" />
                         <div>
                             <Button ghost>
-                                <i class="fa-solid fa-play"></i>
+                                <i className="fa-solid fa-play"></i>
                             </Button>
                         </div>
                     </div>

@@ -19,25 +19,6 @@
         margin-bottom: 15px;
     }
 }
-.newSongCategory_fillter {
-    padding: 4px 24px;
-    border: 1px solid hsla(0,0%,100%,0.1);
-    border-radius: 100px;
-    font-weight: 400;
-    font-size: 12px;
-    text-transform: uppercase;
-    margin-right: 15px;
-    background-color: transparent;
-    color: #fff;
-}
-.newSongCategory_fillter.active {
-    background-color: #3b68ef;
-    border-color: #3b68ef;
-    &:hover {
-        background-color: #1e52ec;
-        color: #fff;
-    }
-}
 .newSongCategory_list {
     display: flex;
     justify-content: space-between;

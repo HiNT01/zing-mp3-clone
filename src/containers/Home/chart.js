@@ -13,7 +13,8 @@ const chart = {
         title: {
              text: '',
         },
-        color : 'transparent'
+        color : 'transparent',
+        startOnTick: false,
     },
 
     xAxis: {

@@ -60,10 +60,19 @@
     right: 0;
     bottom: 0;
     z-index: 3;
-    
     justify-content: space-between;
     align-items: center;
     display: none;
+    > button {
+        width: 55px;
+        height: 55px;
+        color: #fff;
+        border-radius: 50%;
+        border: none;
+        font-size: 3rem;
+        background-color: hsla(0, 0%, 100%, 0.15);
+        box-shadow: 0 2px 4px 0 rgb(226 102 102 / 15%);
+    }
 }
 @keyframes fistItem {
     from {
@@ -76,7 +85,6 @@
 @keyframes secondItem {
     from {
         transform: translateX(calc(100% + 29px));
-        
     }
     to {
         transform: translateX(0);
@@ -99,7 +107,6 @@
     }
     to {
         transform: translateX(0);
-     
     }
 }
 @keyframes secondItemPrev {
