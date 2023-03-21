@@ -6,9 +6,22 @@
 // newSongCategory
 .newSongCategory {
     margin-top: 15px;
+    .newSongCategory_top {
+        display: flex;
+        justify-content: space-between;
+        .newSongCategory_top_btn {
+            background-color: transparent;
+            border: none;
+            text-transform: capitalize;
+            color: rgba($color: #fff, $alpha: 0.5);
+            > svg {
+                margin-left: 10px;
+            }
+        }
+    }
     .newSongCategory_title {
         text-transform: capitalize;
-        color:#fff;
+        color: #fff;
         margin-bottom: 12px;
     }
     .newSongCategory_fillters {
@@ -21,7 +34,7 @@
 }
 .newSongCategory_fillter {
     padding: 4px 24px;
-    border: 1px solid hsla(0,0%,100%,0.1);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
     border-radius: 100px;
     font-weight: 400;
     font-size: 12px;
@@ -41,9 +54,8 @@
 .newSongCategory_list {
     display: flex;
     justify-content: space-between;
-    gap:10px 15px;
+    gap: 10px 15px;
     flex-wrap: wrap;
-    
 }
 .newSongCategory_item {
     width: calc(33% - 15px);
@@ -63,7 +75,7 @@
         text-transform: capitalize;
         font-size: 1.4rem;
         justify-content: space-between;
-        >span {
+        > span {
             color: #ccc;
             font-size: 1.2rem;
         }
@@ -77,7 +89,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         display: none;
         justify-content: space-between;
         padding: 0px 20px;

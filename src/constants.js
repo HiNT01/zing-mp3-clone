@@ -1,0 +1,16 @@
+export const END_POINT_URL = 'https://640f2d3a4ed25579dc48289e.mockapi.io';
+export const END_PONT_URL_USER = 'https://641485398dade07073c248b6.mockapi.io';
+export const GET_LIST_SONG = 'GET_LIST_SONG';
+export const GET_LIST_SONG_SUCCESS = 'GET_LIST_SONG_SUCCESS';
+export const GET_LIST_SONG_FAILED = 'GET_LIST_SONG_FAILED';
+export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const SIGNUP = 'SIGNUP';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+export const LOGIN_ACCOUNT = 'LOGIN_ACCOUNT';
+export const LOGIN_ACCOUNT_SUCCESS = 'LOGIN_ACCOUNT_SUCCESS';
+export const LOGIN_ACCOUNT_FAILED = 'LOGIN_ACCOUNT_FAILED';
+export const SONG_PLAY = 'SONG_PLAY';
+export const PLAY = 'PLAY';

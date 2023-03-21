@@ -1,20 +1,25 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 @font-face {
-  font-family: zingMP3Font;
-  src: url('./assets/font/Inter-Medium.ttf')
-  ;
+    font-family: zingMP3Font;
+    src: url('./assets/font/Inter-Medium.ttf');
 }
 html {
-  font-size: 10px;
-  font-family: zingMP3Font;
+    font-size: 10px;
+    font-family: zingMP3Font;
 }
 body {
-  font-size: 1.6rem;
+    font-size: 1.6rem;
 }
 button {
-  border: none;
+    border: none;
+}
+.visible {
+    display: block !important;
+}
+.invisible {
+    display: none !important;
 }

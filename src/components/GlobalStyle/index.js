@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import logo from '~/assets/imgs/ZingMP3logo.svg.png';
-import ckp from '~/assets/imgs/ckp.webp';
 import NavItem from './components/NavItem';
 import clsx from 'clsx';
 import style from './GlobalStyle.module.scss';
@@ -11,16 +10,102 @@ import {
 } from '~/components/GlobalStyle/components/NavItem/icons';
 import HeaderContent from './components/HeaderContent';
 import { useHref } from 'react-router-dom';
+import { secondsToMinutes } from './actionAudio';
+import ListPlay from './components/ListPlay';
+import Toast from '~/components/Toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginStatus, toast, song, play } from '~/selectors';
+import { useNavigate } from 'react-router-dom';
+import { isPlay, songPlay } from './action';
+import { getListSong } from '~/containers/Home/action';
+
 function GlobalStyle({ children }) {
-    const [isPlay, setIsPlay] = useState(false);
-    // modal create playlist
-    const [open, setOpen] = useState(false);
-    const [confirmLoading, setConfirmLoading] = useState(false);
-    const [modalText, setModalText] = useState('Content of the modal');
+    const [audioInfo, setAudioInfo] = useState({
+        // isPlay : false,
+        // isRepeat : false,
+        // isRandom : false,
+        currentTime: `00:00`,
+        duration: `00:00`,
+        // url: 'https://firebasestorage.googleapis.com/v0/b/music-app-d9617.appspot.com/o/ChiaCachBinhYen_0402.mp3?alt=media&token=abb0905d-e28b-40ef-a0dc-619ca75f3278',
+    });
+    // const [isPlay, setIsPlay] = useState(false);
     const [listOptionModal, setListOptionModal] = useState({
         repeat: false,
         random: false,
     });
+    const [volume, setVolume] = useState(10);
+    const [typeListPlay, setTypeListPlay] = useState(1); // 1 : danh sach phat , 0 : nghe gan day
+
+    const [isShowListPlay, setIsShowListPlay] = useState(false);
+    // selector
+    const dataToast = useSelector(toast);
+    const isLogin = useSelector(loginStatus);
+    const songPlay = useSelector(song);
+    const isPlay = useSelector(play);
+    //
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    let audioRef = useRef(new Audio(songPlay.audioURL));
+    const path = useHref();
+    // modal create playlist
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [modalText, setModalText] = useState('Content of the modal');
+
+    useEffect(() => {
+        if (!isLogin) navigate('/login');
+        dispatch(getListSong());
+    }, []);
+    useEffect(() => {
+        audioRef.current.src = songPlay.audioURL;
+    }, [songPlay]);
+    useEffect(() => {
+        audioRef.current.src = songPlay.audioURL;
+        const audio = audioRef.current;
+        const progressInput = document.getElementById('progress');
+        const handleTimeUpdate = () => {
+            const newCurrentTime = secondsToMinutes(audio.currentTime);
+            const newDuration = secondsToMinutes(audio.duration);
+            setAudioInfo({
+                ...audioInfo,
+                currentTime: newCurrentTime,
+                duration: newDuration,
+            });
+        };
+        if (isPlay) {
+            audio.play();
+            audio.addEventListener('timeupdate', handleTimeUpdate);
+        } else {
+            audio.pause();
+            audio.removeEventListener('timeupdate', handleTimeUpdate);
+        }
+    }, [isPlay]);
+    useEffect(() => {
+        const progressInput = document.getElementById('progress');
+        progressInput.value = handleProgress();
+    }, [audioInfo.currentTime]);
+
+    // function audio
+
+    const handleProgress = () => {
+        const { currentTime, duration } = audioRef.current;
+        const percent = Math.ceil((currentTime * 500) / duration);
+        return percent || 0;
+    };
+    const seekTime = (e) => {
+        const { duration } = audioRef.current;
+        const { value } = e.target;
+        const newCurrentTime = (value * duration) / 500;
+        audioRef.current.currentTime = newCurrentTime;
+    };
+    const handleVolume = (e) => {
+        const { value } = e.target;
+        setVolume(value);
+        const newVolume = value / 10;
+        audioRef.current.volume = newVolume;
+    };
+    // function modal
     const showModal = () => {
         setOpen(true);
     };
@@ -36,18 +121,57 @@ function GlobalStyle({ children }) {
         console.log('Clicked cancel button');
         setOpen(false);
     };
-    useEffect(() => {
-        const tagAudio = document.getElementById('audio');
-        console.log(isPlay);
-        if (isPlay) {
-            tagAudio.play();
-        } else {
-            tagAudio.pause();
-        }
-    }, [isPlay]);
-    const path = useHref();
+    //
+    const a = [
+        {
+            type: 'disable',
+            songInfo: 0,
+            isLibary: false,
+        },
+        {
+            type: 'disable',
+            songInfo: 1,
+            isLibary: false,
+        },
+        {
+            type: 'disable',
+            songInfo: 2,
+            isLibary: false,
+        },
+        {
+            type: 'disable',
+            songInfo: 3,
+            isLibary: false,
+        },
+        {
+            type: 'disable',
+            songInfo: 4,
+            isLibary: false,
+        },
+        {
+            type: 'default',
+            songInfo: 5,
+            isLibary: false,
+        },
+        {
+            type: 'active',
+            songInfo: 6,
+            isLibary: false,
+        },
+        {
+            type: 'default',
+            songInfo: 7,
+            isLibary: true,
+        },
+        {
+            type: 'default',
+            songInfo: 8,
+            isLibary: false,
+        },
+    ];
     return (
         <div className={clsx(style.wrapper)}>
+            <Toast dataToast={dataToast} />
             {/* navbar */}
             <div className={clsx(style.slider)}>
                 <div className={clsx(style.slider_logo)}>
@@ -103,14 +227,45 @@ function GlobalStyle({ children }) {
                     {/* page */}
                     {children}
                 </div>
+                {/* list play */}
+                <div
+                    className={clsx(
+                        style.listPlay_wrapper,
+                        isShowListPlay ? style.active : style.notActive,
+                    )}
+                >
+                    <div className={clsx(style.listPlay_top)}>
+                        <div className={clsx(style.listPlay_topWrapper)}>
+                            <div
+                                className={clsx(
+                                    style.listPlay_top_item,
+                                    typeListPlay ? style.active : '',
+                                )}
+                            >
+                                danh sách phát
+                            </div>
+                            <div
+                                className={clsx(
+                                    style.listPlay_top_item,
+                                    !typeListPlay ? style.active : '',
+                                )}
+                            >
+                                phát gần đây
+                            </div>
+                        </div>
+                    </div>
+                    <div className={clsx(style.listPlay_list)}>
+                        <ListPlay listPlay={a} />
+                    </div>
+                </div>
             </div>
             {/* song */}
             <div className={clsx(style.songPlay)}>
                 <div className={clsx(style.songPlay_info)}>
-                    <img src={ckp} />
+                    <img src={songPlay.imgURL} />
                     <div className={clsx(style.songPlay_info_name)}>
-                        <h5>an tinh sang trang</h5>
-                        <span>chau khai phong</span>
+                        <h5>{songPlay.songName}</h5>
+                        <span>{songPlay.singer}</span>
                     </div>
 
                     <div>
@@ -133,13 +288,16 @@ function GlobalStyle({ children }) {
                         <Button
                             style={{ border: 'none' }}
                             ghost={true}
-                            onClick={() => setIsPlay(!isPlay)}
+                            onClick={() => {
+                                dispatch(play(!isPlay));
+                            }}
                         >
-                            {isPlay ? (
+                            <span className={isPlay ? 'visible' : 'invisible'}>
                                 <i className="fa-solid fa-pause"></i>
-                            ) : (
+                            </span>
+                            <span className={!isPlay ? 'visible' : 'invisible'}>
                                 <i className="fa-solid fa-play"></i>
-                            )}
+                            </span>
                         </Button>
 
                         <Button style={{ border: 'none' }} ghost={true}>
@@ -150,29 +308,50 @@ function GlobalStyle({ children }) {
                         </Button>
                     </div>
                     <div className={clsx(style.songPlay_controls_time)}>
-                        <span>00:01</span>
+                        <span>{audioInfo.currentTime}</span>
                         <input
                             id="progress"
                             className={clsx(style.progress)}
                             type="range"
-                            value="200"
-                            step="10"
+                            step="1"
                             min="0"
                             max="500"
+                            onChange={(e) => seekTime(e)}
                         />
-                        <span>05:30</span>
+                        <span>{audioInfo.duration}</span>
                     </div>
-                    <audio
-                        className={clsx(style.audio)}
-                        src="https://firebasestorage.googleapis.com/v0/b/music-app-d9617.appspot.com/o/AnTinhSangTrang_0542.mp3?alt=media&token=ad29fe90-c840-43de-8277-ebf64d345d4e"
-                        id="audio"
-                    />
                 </div>
                 <div className={clsx(style.songPlay_list)}>
-                    <Button style={{ border: 'none' }} ghost={true}>
+                    <Button
+                        className={+volume ? 'visible' : 'invisible'}
+                        style={{ border: 'none' }}
+                        ghost={true}
+                    >
                         <i className="fa-solid fa-volume-high"></i>
                     </Button>
-                    <Button style={{ border: 'none' }} ghost={true}>
+                    <Button
+                        className={!+volume ? 'visible' : 'invisible'}
+                        style={{ border: 'none' }}
+                        ghost={true}
+                    >
+                        <i className="fa-solid fa-volume-xmark"></i>
+                    </Button>
+
+                    <input
+                        id="volume"
+                        className={clsx(style.songPlay_volume)}
+                        type="range"
+                        step="1"
+                        min="0"
+                        max="10"
+                        value={volume}
+                        onChange={(e) => handleVolume(e)}
+                    />
+                    <Button
+                        style={{ border: 'none' }}
+                        ghost={true}
+                        onClick={() => setIsShowListPlay(!isShowListPlay)}
+                    >
                         <i className="fa-solid fa-list-ol"></i>
                     </Button>
                 </div>

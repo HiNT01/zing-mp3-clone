@@ -25,7 +25,7 @@ function Search() {
     const handleHideResult = () => {
         setIsOpenResult(false);
     };
-
+    
     return (
         <HeadlessTippy
             interactive
@@ -57,7 +57,7 @@ function Search() {
                     value={keyword}
                     onChange={handleOnChangeKeyword}
                     onClick={() => setIsOpenResult(true)}
-                    useRef={inputRef}
+                    ref={inputRef}
                 />
             </div>
         </HeadlessTippy>

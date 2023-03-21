@@ -1,0 +1,11 @@
+import { createSelector } from 'reselect';
+const stateHome = (state) => state.homeReducer;
+const stateGlobal = (state) => state.globalReducer;
+const selectSong = createSelector(stateHome, (state) => state.listSong);
+const listUser = createSelector(stateGlobal, (state) => state.user);
+const toast = createSelector(stateGlobal, (state) => state.toast);
+const loginStatus = createSelector(stateGlobal, (state) => state.isLogin);
+const isLoading = createSelector(stateGlobal, (state) => state.isLoading);
+const song = createSelector(stateGlobal, (state) => state.song);
+const play = createSelector(stateGlobal, (state) => state.isPlay);
+export { selectSong, listUser, loginStatus, toast, isLoading, song, play };
