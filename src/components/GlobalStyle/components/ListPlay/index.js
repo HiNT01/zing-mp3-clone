@@ -1,21 +1,27 @@
 import ListPlayItem from '../ListPlayItem';
-import { useState } from 'react';
-function ListPlay({ listPlay }) {
-    // let newListPlay = listPlay.map((it) => {
-    //     if (it === 6) {
-    //         return { type: 'active', songInfo: it };
-    //     }else if(it < 5) {
-    //         return { type: 'disable', songInfo: it };
-    //     }
-    //     return {
-    //         type: 'default',
-    //         songInfo: it,
-    //     };
-    // });
+import { useEffect, useState } from 'react';
+function ListPlay({
+    listPlay,
+    handleChangeSongInPL,
+    handleDeleteSongInList,
+    handleUpdateUser,
+    typeListPlay,
+    handleChangeSong,
+    dataTheme,
+}) {
     return (
         <div>
-            {listPlay.map((it) => (
-                <ListPlayItem key={it.songInfo} data={it} />
+            {listPlay.map((it, index) => (
+                <ListPlayItem
+                    key={index}
+                    data={it}
+                    handleChangeSongInPL={handleChangeSongInPL}
+                    handleDeleteSongInList={handleDeleteSongInList}
+                    handleUpdateUser={handleUpdateUser}
+                    typeListPlay={typeListPlay}
+                    handleChangeSong={handleChangeSong}
+                    dataTheme={dataTheme}
+                />
             ))}
         </div>
     );

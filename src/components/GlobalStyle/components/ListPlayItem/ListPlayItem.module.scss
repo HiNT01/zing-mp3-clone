@@ -5,9 +5,10 @@
     background-color: transparent;
     padding: 8px;
     border-radius: 5px;
+    cursor: pointer;
 }
 .wrapper:hover {
-    background-color: rgb(57, 74, 97);
+    background-color: hsla(0, 0%, 100%, 0.3);
     .leftImg > div {
         display: flex;
     }
@@ -16,7 +17,7 @@
     }
 }
 .wrapper.active {
-    background-color: #3b68ef;
+    // background-color: #3b68ef;
     .leftImg > div {
         display: flex;
     }
@@ -79,6 +80,7 @@
     display: none;
     color: #fff;
     cursor: pointer;
+    margin-left: 20px;
 }
 .wrapper.active {
     .rightBtn.active svg {

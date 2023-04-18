@@ -9,9 +9,12 @@
     display: flex;
     padding: 10px 0px;
     display: flex;
+    min-height: 60px;
+    align-items: center;
+    width: 100%;
     > span {
         text-transform: uppercase;
-        color: rgba(255, 255, 255,.5);
+        color: rgba(255, 255, 255, 0.5);
         font-size: 1.2rem;
     }
 }
@@ -29,13 +32,22 @@
     width: 50%;
     background-color: transparent;
     display: flex;
+    gap: 20px;
     > button {
+        width: 60%;
         text-transform: uppercase;
         font-size: 1.4rem;
-        color : #fff;
+        color: #fff;
         display: flex;
-        justify-content: center;
         background-color: transparent;
         align-items: center;
     }
+}
+.emty_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.emty {
+    text-transform: capitalize;
 }

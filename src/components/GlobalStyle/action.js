@@ -1,64 +1,19 @@
 import {
-    SIGNUP,
-    SIGNUP_FAILED,
-    SIGNUP_SUCCESS,
-    LOGIN,
-    LOGIN_FAILED,
-    LOGIN_SUCCESS,
     PLAY,
     GET_LIST_SONG,
     GET_LIST_SONG_FAILED,
     GET_LIST_SONG_SUCCESS,
     SONG_PLAY,
+    NEXT_S0NG,
+    PREV_SONG,
+    PLAY_SONG_IN_PL,
+    ADD_SONG_TO_LIST,
+    DELETE_SONG_TO_LIST,
+    PLAY_PLAYlIST,
+    UPDATE_SONG,
+    UPDATE_SONG_FAILED,
+    UPDATE_SONG_SUCCESS,
 } from '~/constants';
-
-const login = (payload) => {
-    return {
-        type: LOGIN,
-        payload,
-    };
-};
-const loginSuccess = (payload) => {
-    return {
-        type: LOGIN_SUCCESS,
-        payload,
-    };
-};
-const loginFailed = (payload) => {
-    return {
-        type: LOGIN_FAILED,
-        payload,
-    };
-};
-const signup = (payload) => {
-    return {
-        type: SIGNUP,
-        payload,
-    };
-};
-const signupSuccess = (payload) => {
-    return {
-        type: SIGNUP_SUCCESS,
-        payload,
-    };
-};
-const signupFailed = (payload) => {
-    return {
-        type: SIGNUP_FAILED,
-        payload,
-    };
-};
-// const getListUser = (payload) => {
-//     return {
-//         type: GET_LIST_USER,
-//         payload,
-//     };
-// };
-const isPlay = () => {
-    return {
-        type: PLAY,
-    };
-};
 const getListSong = (payload) => {
     return {
         type: GET_LIST_SONG,
@@ -80,16 +35,79 @@ const getListSongFailed = (payload) => {
 const songPlay = (payload) => {
     return { type: SONG_PLAY, payload };
 };
+const playSong = (payload) => {
+    return {
+        type: PLAY,
+        payload,
+    };
+};
+const nextSong = (payload) => {
+    return {
+        type: NEXT_S0NG,
+        payload,
+    };
+};
+const prevSong = (payload) => {
+    return {
+        type: PREV_SONG,
+        payload,
+    };
+};
+const playSongInPL = (payload) => {
+    return {
+        type: PLAY_SONG_IN_PL,
+        payload,
+    };
+};
+const addSongToList = (payload) => {
+    return {
+        type: ADD_SONG_TO_LIST,
+        payload,
+    };
+};
+const deleteSongInList = (payload) => {
+    return {
+        type: DELETE_SONG_TO_LIST,
+        payload,
+    };
+};
+const playPlaylist = (payload) => {
+    return {
+        type: PLAY_PLAYlIST,
+        payload,
+    };
+};
+const updateSong = (payload) => {
+    return {
+        type: UPDATE_SONG,
+        payload,
+    };
+};
+const updateSongSuccess = (payload) => {
+    return {
+        type: UPDATE_SONG_SUCCESS,
+        payload,
+    };
+};
+const updateSongFailed = (err) => {
+    return {
+        type: UPDATE_SONG_FAILED,
+        err,
+    };
+};
 export {
-    login,
-    loginSuccess,
-    loginFailed,
-    signup,
-    signupFailed,
-    signupSuccess,
-    isPlay,
     getListSong,
     getListSongSuccess,
     getListSongFailed,
     songPlay,
+    playSong,
+    nextSong,
+    prevSong,
+    playSongInPL,
+    addSongToList,
+    deleteSongInList,
+    playPlaylist,
+    updateSong,
+    updateSongFailed,
+    updateSongSuccess,
 };

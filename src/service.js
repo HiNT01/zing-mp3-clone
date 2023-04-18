@@ -12,10 +12,10 @@ const getListSongApi = () => {
 //   const url = `${URL_ENDPOINT}/songs`;
 //   return axios.post(url, payload);
 // };
-// const updateSongSV = (payload) => {
-//   const url = `${URL_ENDPOINT}/songs/${payload.id}`;
-//   return axios.put(url, payload);
-// };
+const updateSongSV = (payload) => {
+    const url = `${END_POINT_URL}/songs/${payload.id}`;
+    return axios.put(url, payload);
+};
 const getListUser = () => {
     const url = `${END_PONT_URL_USER}/users`;
     return axios.get(url);
@@ -24,5 +24,8 @@ const signupUser = (payload) => {
     const url = `${END_PONT_URL_USER}/users`;
     return axios.post(url, payload);
 };
-
-export { getListSongApi, getListUser, signupUser };
+const updateUserSV = (payload) => {
+    const url = `${END_PONT_URL_USER}/users/${payload.id}`;
+    return axios.put(url, payload);
+};
+export { getListSongApi, getListUser, signupUser, updateUserSV, updateSongSV };

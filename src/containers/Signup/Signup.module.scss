@@ -37,7 +37,7 @@
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -61,7 +61,29 @@
     color: #03e9f4;
     font-size: 12px;
 }
-
+.login_box .user_box,
+.user_box_sex {
+    position: relative;
+    margin-bottom: 20px;
+    > span {
+        display: block;
+        width: 100%;
+        color: red;
+        text-transform: capitalize;
+        font-size: 1.2rem;
+    }
+}
+.user_box_sex {
+    width: 100%;
+    display: flex;
+    gap : 20px 30px;
+    align-items: center;
+    color: #03e9f4;
+    flex-wrap: wrap;
+    > div > label {
+        margin-left: 8px;
+    }
+}
 .login_btn_submit {
     position: relative;
     display: inline-block;

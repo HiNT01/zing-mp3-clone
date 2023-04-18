@@ -8,6 +8,8 @@
     > div {
         display: flex;
     }
+    z-index: 2;
+    position: relative;
 }
 .content_top_control {
     border: none;
@@ -46,14 +48,17 @@
 // modal theme
 .modal_theme_wrapper {
     width: 896px !important;
-    // overflow: auto;
-    height: 100vh;
+    height: 80vh;
     top: 0;
     > div {
-        background-color: #203d65 !important;
+        background-color: transparent !important;
         height: 100%;
     }
     padding: 30px;
+}
+.modal_theme_content {
+    padding: 10px 20px;
+    border-radius: 6px;
 }
 .modal_theme_title {
     font-size: 2.4rem;
@@ -75,19 +80,20 @@
 }
 .modal_theme_row_list {
     display: flex;
-    justify-content: space-between;
+
     gap: 20px 14px;
     flex-wrap: wrap;
     padding: 10px 0px;
 }
 .modal_theme_row_item {
-    // width: calc(20% - 14px);
-    // width: 154px;
-    // height: 102px;
     > span {
         color: #fff;
         margin-top: 8px;
         display: block;
+        text-transform: capitalize;
+        text-align: center;
+        max-width: 100px;
+        margin: auto;
     }
 }
 .modal_theme_row_img {
@@ -101,6 +107,22 @@
         height: 100%;
         border-radius: 8px;
         transition: all linear 0.3s;
+    }
+    .modal_theme_row_color {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        display: flex;
+        position: relative;
+        > div {
+            position: absolute;
+            width: 50%;
+            top: 0;
+            right: 0;
+            background-color: hsla(0%, 0%, 100%, 0.4);
+
+            height: 100%;
+        }
     }
     > div {
         width: 50%;
@@ -121,7 +143,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(255, 255, 255, 0.2);
         border-radius: 0px 8px 8px 0px;
         top: 0;
         right: 0;

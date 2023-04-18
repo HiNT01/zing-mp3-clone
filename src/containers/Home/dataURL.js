@@ -1,3 +1,9 @@
+import chidanIMG from '~/assets/imgs/thumbSinger/chi-dan.png';
+import karikIMG from '~/assets/imgs/thumbSinger/karik.png';
+import mrsiroIMG from '~/assets/imgs/thumbSinger/mr-siro.png';
+import jackIMG from '~/assets/imgs/thumbSinger/jack.png';
+import hoaminzyIMG from '~/assets/imgs/thumbSinger/hoa-minzy.png';
+import trinhthanhbinhIMG from '~/assets/imgs/thumbSinger/trinh-thanh-binh.png';
 const dataURL = [
     {
         id: 1,
@@ -27,27 +33,33 @@ const dataURL = [
 const listSingerURL = [
     {
         id: 1,
-        url: 'https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/justatee.png',
+        singer: 'chidan',
+        url: chidanIMG,
     },
     {
         id: 2,
-        url: 'https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/duc-phuc.png',
+        singer: 'karik',
+        url: karikIMG,
     },
     {
         id: 3,
-        url: 'https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/jack.png',
+        singer: 'trinhthangbinh',
+        url: trinhthanhbinhIMG,
     },
     {
         id: 4,
-        url: 'https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/trinh-thanh-binh.png',
+        singer: 'hoaminzy',
+        url: hoaminzyIMG,
     },
     {
         id: 5,
-        url: 'https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/mr-siro.png',
+        singer: 'jack',
+        url: jackIMG,
     },
     {
         id: 6,
-        url: 'https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/zma-2021/imgs/hoa-minzy.png',
+        singer: 'mrsiro',
+        url: mrsiroIMG,
     },
 ];
-export { dataURL,listSingerURL };
+export { dataURL, listSingerURL };

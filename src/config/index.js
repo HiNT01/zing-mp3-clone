@@ -2,9 +2,12 @@ const configRoutes = {
     home: '/',
     libary: '/libary',
     zingchart: '/zingchart',
-    search: '/search',
+    newSong: '/new-song/:type',
     login: '/login',
     signup: '/signup',
+    singer: '/singer/:singer',
+    search: '/search/:keyword',
+    playlist: '/playlist/:playlist',
 };
 
 export default configRoutes;

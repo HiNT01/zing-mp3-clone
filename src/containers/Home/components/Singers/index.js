@@ -1,9 +1,16 @@
 import style from './Singers.module.scss';
 import clsx from 'clsx';
-function Singers({listSingers}) {
-    return <div className={clsx(style.Singers)}>
-        {listSingers.map((it,index) => <img key = {index} src= {it.url} />)}
-    </div>;
+import { Link } from 'react-router-dom';
+function Singers({ listSingers }) {
+    return (
+        <div className={clsx(style.Singers)}>
+            {listSingers.map((it, index) => (
+                <Link key={index} to={`/singer/${it.singer}`}>
+                    <img src={it.url} />
+                </Link>
+            ))}
+        </div>
+    );
 }
 
 export default Singers;

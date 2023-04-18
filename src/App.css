@@ -23,3 +23,6 @@ button {
 .invisible {
     display: none !important;
 }
+.app {
+    position: relative;
+}

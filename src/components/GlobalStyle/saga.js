@@ -1,49 +1,29 @@
 import { call, put } from 'redux-saga/effects';
-import { getListUser, signupUser } from '~/service';
+import { getListSongApi, updateSongSV } from '~/service';
 import {
-   
-    loginSuccess,
-    loginFailed,
- 
-    signupFailed,
-    signupSuccess,
+    getListSongFailed,
+    getListSongSuccess,
+    updateSongSuccess,
+    updateSongFailed,
 } from '~/components/GlobalStyle/action';
-function* loginSaga(action) {
+function* getListSongSaga(action) {
     try {
-        const response = yield call(getListUser);
-        const arr = response.data;
-        const user = arr.filter(
-            (it) => it.userName === action.payload.userName,
-        );
-        if (!user.length) {
-            yield put(loginFailed('tai khoan khong ton tai'));
-        } else if (!user[0].password === action.payload.password) {
-            yield put(loginFailed('mat khau khong chinh xac'));
-        } else {
-            yield put(loginSuccess(user));
-        }
-    } catch (err) {
-        yield put(loginFailed(err));
-    }
-}
-function* signupSaga(action) {
-    try {
-        const response = yield call(getListUser);
-        const arr = response.data;
-        const user = arr.filter(
-            (it) => it.userName === action.payload.userName,
-        );
-        const userExist = !user.length;
-        if (userExist) {
-            const responseSignup = yield call(signupUser,action.payload)
-            if(responseSignup.status === 201)
-            yield put(signupSuccess(responseSignup.data));
-        } else {
-            yield put(signupFailed('tai khoan da ton tai'))
-        }
+        const response = yield call(getListSongApi);
 
+        if (response.status === 200)
+            yield put(getListSongSuccess(response.data));
     } catch (err) {
-        yield put(signupFailed(err));
+        yield put(getListSongFailed(err));
     }
 }
-export { loginSaga, signupSaga };
+function* handleUpdateSong(action) {
+    try {
+        const response = yield call(updateSongSV, action.payload);
+        if (response.status === 200)
+            yield put(updateSongSuccess(action.payload));
+    } catch (e) {
+        yield put(updateSongFailed(e));
+    }
+}
+
+export { getListSongSaga, handleUpdateSong };

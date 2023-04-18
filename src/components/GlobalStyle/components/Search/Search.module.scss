@@ -1,12 +1,11 @@
 // --------------
-
 .content_top_search {
     width: 428px;
     display: flex;
     height: 40px;
     border-radius: 20px;
     justify-content: center;
-    background-color: rgba(46, 64, 88, 1);
+    // background-color: rgba(46, 64, 88, 1);
     color: #eee;
     position: relative;
     z-index: 10000;
@@ -20,17 +19,17 @@
         z-index: 6;
     }
 }
-.content_top_search.active {
-    background-color: #203d65;
-}
+// .content_top_search.active {
+//     background-color: #203d65;
+// }
 .content_top_result {
     position: absolute;
     bottom: 0;
     left: 0;
-    transform: translate(-50%,calc(100% + 25px));
+    transform: translate(-50%, calc(100% + 25px));
     width: 428px;
     min-height: 200px;
-    background-color: #203d65;
+    // background-color: #203d65;
     border-radius: 0px 0px 20px 20px;
     padding: 40px 15px 20px;
     > h4 {
@@ -38,11 +37,11 @@
         font-size: 1.4rem;
         font-weight: 700;
     }
-    z-index: -1;
+    z-index: 999;
 }
-.content_top_result.active {
-    z-index: 5;
-}
+// .content_top_result.active {
+//     z-index: 9999;
+// }
 
 .content_top_search > input {
     flex-grow: 1;
@@ -51,7 +50,7 @@
     padding: 5px 0px;
     outline: none;
     color: #fff;
-    z-index: 6;
+    z-index: 99999;
 }
 .content_top_search > input::placeholder {
     text-transform: capitalize;

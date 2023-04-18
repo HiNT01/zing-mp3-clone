@@ -5,7 +5,6 @@ import 'tippy.js/dist/tippy.css'; // optional
 import { Link } from 'react-router-dom';
 
 function NavItem({ title, children, path, isActive }) {
-    
     return (
         <Tippy content={<span>{title}</span>}>
             <Link

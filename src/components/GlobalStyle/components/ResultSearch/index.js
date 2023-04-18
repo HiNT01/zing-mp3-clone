@@ -1,35 +1,60 @@
 import style from './ResultSearch.module.scss';
 import clsx from 'clsx';
-import ckp from '~/assets/imgs/ckp.webp';
-import { Button } from 'antd';
+import defaultIMG from '~/assets/imgs/default.webp';
 
-function ResultSearch({ listResult }) {
+import { Button, Spin } from 'antd';
+
+function ResultSearch({
+    listResult,
+    handleChangeSong,
+    handleAddSongToList,
+    isEmtySearch,
+    isLoading,
+}) {
+    if (isLoading)
+        return (
+            <div className={clsx(style.wrapper)}>
+                <Spin size="large" />
+            </div>
+        );
+    if (isEmtySearch)
+        return (
+            <div className={clsx(style.wrapper)}>
+                <h3 className={clsx(style.emty_title)}>
+                    không tìm thấy bài hát
+                </h3>
+            </div>
+        );
+
     return (
         <div className={clsx(style.list)}>
-            {listResult.map((it) => (
-                <div key={it} className={clsx(style.newSongCategory_item)}>
-                    <img src={ckp} alt="img" />
+            {listResult.map((it, index) => (
+                <div key={index} className={clsx(style.newSongCategory_item)}>
+                    <img src={it.imgURL || defaultIMG} alt="img" />
                     <div className={clsx(style.newSongCategory_item_info)}>
-                        <b>ân tình sang trang</b>
-                        <span>châu khải phong</span>
+                        <b>{it.songName}</b>
+                        <span>{it.singer}</span>
                     </div>
                     <div className={clsx(style.newSongCategory_item_before)}>
                         <Button
-                            style={{
-                                width: '30px',
-                                height: '30px',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                fontSize: '1rem',
-                                padding: '0',
-                            }}
-                            ghost
+                            className={clsx(style.newSongCategory_item_btn)}
+                            onClick={() => handleChangeSong(it)}
                         >
                             <i className="fa-solid fa-play"></i>
                         </Button>
-                        <Button ghost>
-                            <i className="fa-solid fa-ellipsis"></i>
+                        <Button
+                            className={clsx(
+                                style.newSongCategory_item_btn,
+                                it.isLibary ? style.active : '',
+                            )}
+                        >
+                            <i className="fa-solid fa-heart"></i>
+                        </Button>
+                        <Button
+                            className={clsx(style.newSongCategory_item_btn)}
+                            onClick={() => handleAddSongToList(it)}
+                        >
+                            <i className="fa-solid fa-circle-plus"></i>
                         </Button>
                     </div>
                 </div>

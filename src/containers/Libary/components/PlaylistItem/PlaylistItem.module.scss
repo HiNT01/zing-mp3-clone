@@ -1,5 +1,7 @@
 .wrapper {
     cursor: pointer;
+    text-decoration: none;
+    color: #fff;
     > span {
         text-transform: capitalize;
         margin-top: 8px;
@@ -7,11 +9,12 @@
     }
 }
 .thumb {
-    width: 210px;
-    height: 210px;
+    width: 150px;
+    height: 150px;
     > img {
         width: 100%;
         height: 100%;
         border-radius: 8px;
+        image-rendering: pixelated;
     }
 }

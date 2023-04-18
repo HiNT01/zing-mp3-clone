@@ -30,6 +30,12 @@
 
 .login_box .user_box {
     position: relative;
+    margin-bottom: 20px;
+    > span {
+        color: red;
+        text-transform: capitalize;
+        font-size: 1.2rem;
+    }
 }
 
 .login_box .user_box input {
@@ -37,7 +43,7 @@
     padding: 10px 0;
     font-size: 16px;
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -173,12 +179,11 @@
         color: #fff;
     }
     > a {
-        text-decoration:none;
+        text-decoration: none;
         text-transform: capitalize;
         color: #03e9f4;
         &:hover {
-        color: #008a91;
-
+            color: #008a91;
         }
     }
 }
