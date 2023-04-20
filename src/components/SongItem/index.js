@@ -65,7 +65,7 @@ function SongItem(props) {
                     </div>
                 ) : (
                     <div
-                        className={clsx(style.style.rightBtn)}
+                        className={clsx(style.rightBtn)}
                         onClick={() => handleUpdateUser(it.id, 'updateMySong')}
                     >
                         <i className="fa-solid fa-heart"></i>
